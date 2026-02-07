@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="个人AI学习分享页面 - 通过轻松亲切的方式分享AI学习经验、推荐实用工具、展示个人项目">
+  <meta name="keywords" content="AI学习,人工智能,学习分享,工具推荐,个人项目">
+  <meta name="author" content="AI学习者">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="个人AI学习分享页面">
+  <meta property="og:description" content="一起探索AI世界，分享学习经验和实用工具">
+  <meta property="og:image" content="/images/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="个人AI学习分享页面">
+  <meta property="twitter:description" content="一起探索AI世界，分享学习经验和实用工具">
+  <meta property="twitter:image" content="/images/og-image.jpg">
+  
+  <!-- 性能优化 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  
+  <title>个人AI学习分享页面 - 一起探索AI世界</title>
+  
+  <!-- 图标 -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  
+  <!-- 渐进式Web应用 -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#74b9ff">
+  
+  <!-- 移动端优化 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AI学习分享">
+  
+  <!-- 安全 -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  
+  <!-- 性能监控 -->
+  <script>
+    // 页面加载时间监控
+    window.performance.mark('html-start')
+    
+    // 资源加载错误监控
+    window.addEventListener('error', function(e) {
+      console.error('资源加载错误:', e.filename, e.message)
+    }, true)
+    
+    // 未处理Promise拒绝监控
+    window.addEventListener('unhandledrejection', function(e) {
+      console.error('未处理的Promise拒绝:', e.reason)
+    })
+  </script>
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date())
+    gtag('config', 'GA_MEASUREMENT_ID')
+  </script>
+</head>
+<body>
+  <!-- 加载状态 -->
+  <div id="loading" class="initial-loading">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">正在加载AI学习分享页面...</p>
+    </div>
+  </div>
+  
+  <!-- 应用根节点 -->
+  <div id="app"></div>
+  
+  <!-- 初始样式 -->
+  <style>
+    .initial-loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease;
+    }
+    
+    .loading-content {
+      text-align: center;
+      color: #2d3436;
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid #74b9ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    
+    .loading-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+    
+    /* 隐藏加载状态 */
+    .initial-loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+  
+  <!-- 应用脚本 -->
+  <script type="module" src="/src/main.js"></script>
+  
+  <!-- 性能优化：预加载关键资源 -->
+  <link rel="preload" href="/src/components/CartoonAvatar.vue" as="fetch">
+  <link rel="preload" href="/src/components/PersonalBrandShowcase.vue" as="fetch">
+  
+  <!-- 页面加载完成处理 -->
+  <script>
+    window.addEventListener('load', function() {
+      window.performance.mark('window-load-complete')
+      
+      // 隐藏初始加载状态
+      const loading = document.getElementById('loading')
+      if (loading) {
+        setTimeout(() => {
+          loading.classList.add('hidden')
+          setTimeout(() => {
+            loading.style.display = 'none'
+          }, 500)
+        }, 1000)
+      }
+      
+      // 性能监控
+      if (window.performance && window.performance.mark) {
+        window.performance.mark('html-load-complete')
+      }
+    })
+    
+    // 首次内容绘制监控
+    if (window.performance && window.performance.getEntriesByType) {
+      window.addEventListener('load', function() {
+        setTimeout(() => {
+          const paintEntries = window.performance.getEntriesByType('paint')
+          paintEntries.forEach(entry => {
+            console.log(`${entry.name}: ${entry.startTime}ms`)
+          })
+        }, 0)
+      })
+    }
+  </script>
+</body>
+</html>
